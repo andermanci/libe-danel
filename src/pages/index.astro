@@ -1,19 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+import Countdown from '@/sections/Countdown.astro';
 ---
 
 <Layout title="Libe & Danel">
-	<main class="flex justify-center items-center h-screen w-screen bg-black/70">
-		<h1 class="text-6xl text-white text-center caveat-light">En construcción</h1>
+	<main class="flex flex-col justify-center items-center h-screen w-screen bg-black/70">
+		<h1 class="text-8xl text-white text-center caveat-light">Libe & Danel</h1>
+		<Countdown/>
 	</main>
 </Layout>
-
-<style>
-	.caveat-light {
-		font-family: "Caveat", cursive;
-		font-optical-sizing: auto;
-		font-weight: 300;
-		font-style: normal;
-	}
-</style>
 
