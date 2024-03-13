@@ -1,4 +1,6 @@
 ---
+import "@fontsource-variable/caveat"
+
 interface Props {
 	title: string;
 }
@@ -23,19 +25,75 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
+
 <style is:global>
-	body {
-		background: url('../../public/images/background.png');
-		background-size: 300px;
-		background-repeat: repeat;
-		height: 100vh;
-		width: 100vw;
+	:root {
+		--color-primary: #ABADA0;
+		--color-secondary: #212529;
+		--color-accent: #E4B742;
+
+		--background-color: #fff;
 	}
 
-	.caveat-light {
-		font-family: "Caveat", cursive;
-		font-optical-sizing: auto;
-		font-weight: 300;
-		font-style: normal;
+	html {
+		font-family: "Caveat", system-ui, sans-serif;
+		background: url('/images/background.png');
+		background-size: 300px;
+		background-repeat: repeat;
+	}
+
+	main {
+		position: relative;
+	}
+
+	@media screen and (prefers-reduced-motion: no-preference) {
+		html {
+			scroll-behavior: smooth;
+		}
+	}
+
+	/* Hiding class, making content visible only to screen readers but not visually */
+	/* "sr" meaning "screen-reader" */
+	.sr-only:not(:focus):not(:active) {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+
+	@supports selector(::-webkit-scrollbar) {
+		::-webkit-scrollbar {
+			width: 10px;
+			border-radius: 10px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			background-color: theme("colors.primary");
+			border: 2px solid transparent;
+			background-clip: content-box;
+		}
+
+		::-webkit-scrollbar-thumb:active {
+			background-color: #666;
+		}
+
+		::-webkit-scrollbar-track {
+			background: var(--background-image);
+		}
+
+		::-webkit-scrollbar-corner {
+			background: var(--background-image);
+		}
+	}
+
+	@supports not selector(::-webkit-scrollbar) {
+		* {
+			scrollbar-color: theme("colors.primary") transparent;
+			scrollbar-width: thin;
+		}
 	}
 </style>
