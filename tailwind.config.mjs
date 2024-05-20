@@ -6,7 +6,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				atomic: ["Atomic", "cursive"],
+				avenir: ["Avenir"],
 			},
 			colors: {
 				primary: "var(--color-primary)",
