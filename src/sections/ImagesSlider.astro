@@ -1,0 +1,79 @@
+---
+import ChevronDown from '@/icons/chevron-down.astro'
+---
+
+<section class="flex flex-col justify-center items-center h-screen w-full gap-12 relative bg-black/40">
+    <div class="slider">
+        <div class="slides">
+            <img src="images/carousel-1.jpeg" alt="Image 1" class="active">
+            <img src="images/carousel-2.jpeg" alt="Image 2">
+            <img src="images/carousel-3.jpeg" alt="Image 3">
+            <img src="images/carousel-4.jpeg" alt="Image 4">
+        </div>
+    </div>
+	<h1 class="text-7xl font-bold sm:text-8xl md:text-9xl text-white text-center title">Libe & <br class="block sm:hidden">Danel</h1>
+    <h2 class="text-4xl md:text-5xl text-white text-center font-bold">12 / 10 / 2024</h2>
+    <div class="absolute bottom-12 animate-bounce">
+        <ChevronDown class="w-[24px] h-[24px] text-white"/>
+    </div>
+</section>
+
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.slides img');
+    const totalImages = images.length;
+
+    function showNextImage() {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % totalImages;
+        images[currentIndex].classList.add('active');
+    }
+
+    setInterval(showNextImage, 10000); // Change image every 10 seconds
+</script>
+
+<style>
+    .slider {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    .slides {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .slides img {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+
+    .active {
+        opacity: 1 !important;
+    }
+
+    .animate-bounce {
+        animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(-30%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
+</style>

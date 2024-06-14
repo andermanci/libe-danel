@@ -1,19 +1,21 @@
 import defaultTheme from "tailwindcss/defaultTheme"
+import animations from '@midudev/tailwind-animations'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: [
+		'./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+		'./node_modules/flowbite/**/*.js',
+	],
 	theme: {
 		extend: {
 			fontFamily: {
 				avenir: ["Avenir"],
 			},
 			colors: {
-				primary: "var(--color-primary)",
-				secondary: "var(--color-secondary)",
-				accent: "var(--color-accent)",
-				twitch: "var(--color-twitch)",
-				ice: "var(--color-twitch-ice)",
+				primary: "rgb(var(--color-primary) / <alpha-value>)",
+				secondary: "rgb(var(--color-secondary) / <alpha-value>)",
+				accent: "rgb(var(--color-accent) / <alpha-value>)"
 			},
 			screens: {
 				xs: "360px",
@@ -22,5 +24,8 @@ export default {
 			},
 		},
 	},
-	plugins: [],
+	plugins: [
+		animations,
+		require('flowbite/plugin'),
+	],
 }

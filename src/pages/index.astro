@@ -1,13 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+import ImagesSlider from '@/sections/ImagesSlider.astro';
+import Navbar from '@/sections/Navbar.astro';
+import Hero from '@/sections/Hero.astro';
 import Countdown from '@/sections/Countdown.astro';
+import Invitation from '@/sections/Invitation.astro';
+import Address from '@/sections/Address.astro';
+import Gallery from '@/sections/Gallery.astro';
+import Footer from '@/sections/Footer.astro';
 ---
 
 <Layout title="Libe & Danel">
-	<main class="flex flex-col justify-center items-center h-screen w-screen bg-black/70">
-		<h1 class="text-7xl md:text-9xl text-white text-center">Libe & Danel</h1>
+	<main class="flex flex-col justify-center items-center">
+		<ImagesSlider/>
+		<Navbar/>
+		<Hero/>
 		<Countdown/>
+		<Invitation/>
+		<Address/>
+		<Gallery/>
+		<Footer/>
 	</main>
 </Layout>
 

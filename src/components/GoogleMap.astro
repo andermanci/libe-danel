@@ -1,0 +1,12 @@
+<div id="map" class={Astro.props.class}></div>
+
+<script is:inline>
+    function initMap() { 
+        map = new google.maps.Map(document.getElementById('map'), { 
+            center: {lat: 43.3359822, lng: -1.8860338}, 
+            zoom: 13 
+        }); 
+    }
+
+    initMap();
+</script>
