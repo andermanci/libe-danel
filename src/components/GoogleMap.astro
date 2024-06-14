@@ -3,21 +3,27 @@
 <script is:inline>
     function initMap() { 
         map = new google.maps.Map(document.getElementById('map'), { 
-            center: {lat: 43.3498743, lng: -1.8264255}, 
+            center: {lat: 43.349726, lng: -1.825433}, 
             zoom: 13 
         }); 
         setMarker();
     }
 
     function addMarker(location) {
-        marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
             position: location,
             map: map
         });
+
+        const infoWindow = new google.maps.InfoWindow({
+            content: '<b>Asador Sutan</b><br><a href="https://www.google.com/maps?ll=43.349726,-1.825433&z=18&t=m&hl=es-ES&gl=US&mapclient=apiv3&cid=4593480773902097949" target="_blank">Ver en Google Maps</a>'
+        });
+
+        infoWindow.open(map, marker);
     }
 
     function setMarker() {
-        sutan = new google.maps.LatLng(43.3498743, -1.8264255);
+        sutan = new google.maps.LatLng(43.349726, -1.825433);
         addMarker(sutan);
     }
 
