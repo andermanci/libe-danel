@@ -15,6 +15,7 @@ import Typography from '@/components/Typography.astro'
     <form name="contact" method="POST" data-netlify="true" class="w-full flex flex-col gap-6 mt-8">
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="Asunto" value="Confirmación asistencia boda" />
+        
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900">Asistencia</label>
             <div class="flex items-center gap-4">
@@ -28,20 +29,25 @@ import Typography from '@/components/Typography.astro'
                 </label>
             </div>        
         </div>
+        
         <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nombres</label>
             <input type="text" id="name" name="Nombres" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nombres de los invitados" required />
         </div>
+        
         <div>
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo electrónico</label>
-            <input type="text" id="email" name="Correo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nombres de los invitados" required />
+            <input type="text" id="email" name="CorreoElectronico" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Correo electrónico" required />
         </div>
+        
         <div>
             <label for="menu" class="block mb-2 text-sm font-medium text-gray-900">¿Necesitas un menú especial?</label>
-            <textarea id="menu" rows="4" name="Intolerancias" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Intolerancias, alergias, vegetariano..."></textarea>
+            <textarea id="menu" rows="4" name="MenuEspecial" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Intolerancias, alergias, vegetariano..."></textarea>
         </div>
+        
         <button type="submit" class="w-full text-white bg-accent focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 focus:outline-none">
             ENVIAR
         </button>
     </form>
+    
 </div>
