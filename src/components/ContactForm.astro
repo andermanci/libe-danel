@@ -36,11 +36,6 @@ import Typography from '@/components/Typography.astro'
         </div>
         
         <div>
-            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo electrónico</label>
-            <input type="text" id="email" name="CorreoElectronico" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Correo electrónico" required />
-        </div>
-        
-        <div>
             <label for="menu" class="block mb-2 text-sm font-medium text-gray-900">¿Necesitas un menú especial?</label>
             <textarea id="menu" rows="4" name="MenuEspecial" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Intolerancias, alergias, vegetariano..."></textarea>
         </div>
@@ -49,5 +44,13 @@ import Typography from '@/components/Typography.astro'
             ENVIAR
         </button>
     </form>
+
+    <form name="simple-contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="simple-contact" />
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <button type="submit">Send</button>
+    </form>
+    
     
 </div>
