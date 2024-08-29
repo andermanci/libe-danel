@@ -12,26 +12,36 @@ import Typography from '@/components/Typography.astro'
         ¿Contamos contigo?
     </Typography>
     
-    <form name="contact" method="POST" data-netlify="true">
-        <p>
-          <label>Your Name: <input type="text" name="name" /></label>
-        </p>
-        <p>
-          <label>Your Email: <input type="email" name="email" /></label>
-        </p>
-        <p>
-          <label>Your Role: <select name="role[]" multiple>
-            <option value="leader">Leader</option>
-            <option value="follower">Follower</option>
-          </select></label>
-        </p>
-        <p>
-          <label>Message: <textarea name="message"></textarea></label>
-        </p>
-        <p>
-          <button type="submit">Send</button>
-        </p>
-      </form>
-      
+    <form name="contact" method="POST" data-netlify="true" class="w-full flex flex-col gap-6 mt-8">
+        <input type="hidden" name="Asunto" value="Confirmación asistencia boda" />
+        
+        <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900">Asistencia</label>
+            <div class="flex items-center gap-4">
+                <label class="flex items-center">
+                    <input type="radio" name="Asistencia" value="Sí" class="bg-gray-50 border border-gray-300 text-gray-900" required />
+                    <span class="ml-2 text-sm text-gray-900">Sí</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" name="Asistencia" value="No" class="bg-gray-50 border border-gray-300 text-gray-900" required />
+                    <span class="ml-2 text-sm text-gray-900">No</span>
+                </label>
+            </div>        
+        </div>
+        
+        <div>
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nombres</label>
+            <input type="text" id="name" name="Nombres" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Nombres de los invitados" required />
+        </div>
+        
+        <div>
+            <label for="menu" class="block mb-2 text-sm font-medium text-gray-900">¿Necesitas un menú especial?</label>
+            <textarea id="menu" rows="4" name="MenuEspecial" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Intolerancias, alergias, vegetariano..."></textarea>
+        </div>
+        
+        <button type="submit" class="w-full text-white bg-accent focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 focus:outline-none">
+            ENVIAR
+        </button>
+    </form>
     
 </div>
