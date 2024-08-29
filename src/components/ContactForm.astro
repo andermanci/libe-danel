@@ -12,7 +12,7 @@ import Typography from '@/components/Typography.astro'
         ¿Contamos contigo?
     </Typography>
     
-    <form name="contact" method="POST" data-netlify="true" class="w-full flex flex-col gap-6 mt-8">
+    <form name="contact" action="?contact-sended=true" method="POST" data-netlify="true" class="w-full flex flex-col gap-6 mt-8">
         <input type="hidden" name="Asunto" value="Confirmación asistencia boda" />
         
         <div>
@@ -47,22 +47,31 @@ import Typography from '@/components/Typography.astro'
 </div>
 
 <script>
-    const handleSubmit = (event: any) => {
-    event.preventDefault();
+    document.addEventListener('DOMContentLoaded', () => {
+        // Función para verificar si la query string contiene 'contactSended=true'
+        const urlParams = new URLSearchParams(window.location.search);
+        const contactSended = urlParams.get('contact-sended');
 
-    const myForm = event.target;
-    const formData = new FormData(myForm);
-    
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: formData,
-    })
-        .then(() => alert("Gracias por tu respuesta"))
-        .catch((error) => alert(error));
-    };
+        // Si la query string contiene 'contactSended=true', mostrar el mensaje de éxito
+        if (contactSended === 'true') {
+            const successAlert = document.createElement('div');
+            successAlert.className = 'p-6 mb-4 text-md text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 absolute top-4 right-4 z-50';
+            successAlert.setAttribute('role', 'alert');
+            successAlert.innerHTML = `
+                <span class="font-medium">¡Gracias por enviarnos una respuesta!</span>
+            `;
 
-    document
-        .querySelector("form")!
-        .addEventListener("submit", handleSubmit);
+            // Insertar el mensaje al principio del cuerpo del documento o en el contenedor deseado
+            document.body.insertAdjacentElement('afterbegin', successAlert);
+
+            setTimeout(() => {
+                successAlert.style.transition = 'opacity 0.5s'; // Añadir transición para desvanecer
+                successAlert.style.opacity = '0'; // Desvanecer el mensaje
+                setTimeout(() => successAlert.remove(), 500); // Eliminar el mensaje después de la transición
+            }, 5000);
+
+            const newUrl = `${window.location.pathname}`;
+            history.replaceState(null, '', newUrl);
+        }
+    });
 </script>
