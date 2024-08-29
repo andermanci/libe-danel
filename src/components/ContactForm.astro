@@ -45,3 +45,24 @@ import Typography from '@/components/Typography.astro'
     </form>
     
 </div>
+
+<script>
+    const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+    
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData,
+    })
+        .then(() => alert("Gracias por tu respuesta"))
+        .catch((error) => alert(error));
+    };
+
+    document
+        .querySelector("form")!
+        .addEventListener("submit", handleSubmit);
+</script>
