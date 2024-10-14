@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "l'Alfàs del Pi",
+			"country": {
+				"code": "ES",
+				"name": "Spain"
+			},
+			"subdivision": {
+				"code": "VC",
+				"name": "Valencia"
+			},
+			"timezone": "Europe/Madrid",
+			"latitude": 38.7275,
+			"longitude": -0.0672
+		},
+		"timestamp": 1724959612348
+	}
+}
