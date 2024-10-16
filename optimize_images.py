@@ -5,7 +5,7 @@ from PIL import Image
 input_folder = 'public/images/gallery/fotomaton'
 
 # Carpeta de destino para las imágenes convertidas
-output_folder = 'public/images/gallery/fotomaton/thumbnails'
+output_folder = 'public/images/gallery/fotomaton/good-quality'
 
 # Crear la carpeta de destino si no existe
 if not os.path.exists(output_folder):
@@ -20,7 +20,7 @@ def convert_image_to_webp(input_path, output_path):
         # Abrir la imagen
         image = Image.open(input_path)
         # Convertir y guardar la imagen en formato WebP
-        image.save(output_path, 'webp', optimize=True, quality=10)
+        image.save(output_path, 'webp', optimize=True, quality=90)
         print(f'Imagen convertida y guardada: {output_path}')
     except Exception as e:
         print(f'Error al convertir {input_path}: {e}')
