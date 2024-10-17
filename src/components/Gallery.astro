@@ -46,14 +46,3 @@ const photos = Array.from({ length: photoCount }, (_, i) => ({
         ))
     }
 </section>
-
-<script>
-    import PhotoSwipeLightbox from "photoswipe/lightbox"
-
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: "#gallery",
-        children: "a",
-        pswpModule: () => import("photoswipe"),
-    })
-    lightbox.init()
-</script>
