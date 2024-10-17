@@ -7,6 +7,8 @@ import preact from "@astrojs/preact";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), preact()],
-  adapter: netlify(),
+  adapter: netlify({
+    edgeMiddleware: true
+  }),
   output: "server",
 });
