@@ -1,0 +1,48 @@
+---
+import "photoswipe/style.css"
+
+interface Props {
+	folder: string;
+    photoCount: number;
+}
+
+const { folder, photoCount } = Astro.props;
+
+const photos = Array.from({ length: photoCount }, (_, i) => ({
+  file: `img-${i + 1}.webp`,
+  width: 997,
+  height: 664,
+}));
+---
+
+<section id="gallery" class="w-11/12 md:w-5/6 lg:w-4/6 grid sm:grid-cols-2 md:grid-cols-3 gap-4 pswp-gallery pb-8">
+    {
+        photos.map(({ height, width }, i) => (
+            <a
+                class="group rounded-xl hover:scale-105 hover:contrast-[110%] transition-all relative"
+                href={`/images/gallery/${folder}/img-${i + 1}.webp`}
+                target="_blank"
+                data-cropped="true"
+                data-pswp-width={width}
+                data-pswp-height={height}
+            >
+                <img
+                    class="rounded-xl object-cover w-full h-auto"
+                    loading="lazy"
+                    src={`/images/gallery/${folder}/thumbnails/img-${
+                        i + 1
+                    }.webp`}
+                    alt="Fotografía de la boda"
+                />
+                <img
+                    class="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-150 -z-10 object-cover"
+                    loading="lazy"
+                    src={`/images/gallery/${folder}/thumbnails/img-${
+                        i + 1
+                    }.webp`}
+                    alt="Imagen con efecto blur para hacer de sombra de una fotografía de la bode"
+                />
+            </a>
+        ))
+    }
+</section>

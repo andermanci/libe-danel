@@ -1,0 +1,19 @@
+.pswp {
+    --pswp-bg: #00012a;
+  }
+
+  #gallery a {
+    cursor: zoom-in;
+    animation: fade-up-images linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 20%;
+  }
+
+  @keyframes fade-up-images {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

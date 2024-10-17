@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 
 import ImagesSlider from '@/sections/ImagesSlider.astro';
 import Navbar from '@/sections/Navbar.astro';
@@ -16,12 +16,12 @@ import Footer from '@/sections/Footer.astro';
 	<main class="flex flex-col justify-center items-center">
 		<ImagesSlider/>
 		<Navbar/>
-		<Hero/>
+		<Gallery/>
 		<Countdown/>
 		<Invitation/>
+		<Hero/>
 		<Address/>
-		<Gallery/>
-		<Form/>
+		<!-- <Form/> -->
 		<Footer/>
 	</main>
 </Layout>
