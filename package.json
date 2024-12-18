@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "create-meta-gallery": "bun ./scripts/create-meta-from-gallery.ts",
+    "rename-files": "bun ./scripts/rename-files.ts"
   },
   "dependencies": {
     "@appnest/masonry-layout": "^2.2.3",

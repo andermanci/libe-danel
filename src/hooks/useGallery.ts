@@ -14,7 +14,7 @@ const galleryInfoTyped: GalleryInfo = typeInfo;
 
 export const useGallery = ({type}: {type: string}) => {
     const [page, setPage] = useState(1);
-    const offset = 20;
+    const offset = 50;
     const first = useRef<HTMLAnchorElement>(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const photos = galleryInfoTyped[type]?.slice(0, offset) ?? [];
@@ -27,6 +27,7 @@ export const useGallery = ({type}: {type: string}) => {
             const lightbox = new PhotoSwipeLightbox({
               gallery: "#gallery",
               children: "a",
+              loop: false,
               pswpModule: () => import("photoswipe"),
             })
             lightbox.init()
