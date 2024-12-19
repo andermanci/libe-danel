@@ -14,7 +14,7 @@ const galleryInfoTyped: GalleryInfo = typeInfo;
 
 export const useGallery = ({type}: {type: string}) => {
     const [page, setPage] = useState(1);
-    const offset = 25;
+    const offset = 100;
     const first = useRef<HTMLAnchorElement>(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const photos = galleryInfoTyped[type]?.slice(0, offset) ?? [];
