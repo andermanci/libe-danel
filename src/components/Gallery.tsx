@@ -1,14 +1,42 @@
 import 'photoswipe/style.css';
 
-import Button from '@/components/Button.tsx';
 import { useGallery } from "@/hooks/useGallery"
 import '@/components/styles/Galeria.css';
-
-import { type Masory } from "@/types/gallery"
+import { useCallback, useEffect, useRef } from 'preact/hooks';
 
 export default function Galeria({type}:{type:string}) {
   
   const {first,isExpanded,photos,LoadMore} = useGallery({type})
+
+  const observerRef = useRef<HTMLDivElement | null>(null);
+
+  const handleIntersection = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [entry] = entries;
+      if (entry.isIntersecting && !isExpanded) {
+        LoadMore();
+      }
+    },
+    [isExpanded, LoadMore]
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null, // Viewport completo
+      rootMargin: "100px", // Comienza a cargar antes de que el usuario llegue al final
+      threshold: 0.1, // Activa cuando el 10% del elemento es visible
+    });
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
+      }
+    };
+  }, [handleIntersection]);
 
   return ( 
     <section class="w-11/12 md:w-5/6 pb-8">
@@ -50,12 +78,14 @@ export default function Galeria({type}:{type:string}) {
         }
       </masonry-layout>
 
-      <div class="text-center mx-auto">
+      {/* <div class="text-center mx-auto">
       {
       !isExpanded && 
         <button onClick={LoadMore} id="load-more" class="bg-primary py-2 px-4 rounded-xl text-white mt-12">Cargar más fotos</button>
       }
-      </div>
+      </div> */}
+
+      <div ref={observerRef} className="observer-trigger h-40"></div>
 
     </section>
   )

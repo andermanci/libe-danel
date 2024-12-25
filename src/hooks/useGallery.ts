@@ -14,7 +14,7 @@ const galleryInfoTyped: GalleryInfo = typeInfo;
 
 export const useGallery = ({type}: {type: string}) => {
     const [page, setPage] = useState(1);
-    const offset = 100;
+    const offset = 30;
     const first = useRef<HTMLAnchorElement>(null);
     const [isExpanded, setIsExpanded] = useState(false);
     const photos = galleryInfoTyped[type]?.slice(0, offset) ?? [];
@@ -35,9 +35,7 @@ export const useGallery = ({type}: {type: string}) => {
         init()
       }, [])
 
-      const LoadMore = async (e:MouseEvent) => {
-        e.preventDefault()
-       
+      const LoadMore = async () => {
         const res = await fetch(`/api/gallery.json?type=${type}&offset=${offset}&page=${page}`)
         const images = await res.json()
     
