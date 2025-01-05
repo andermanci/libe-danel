@@ -39,7 +39,7 @@ export const useGallery = ({ type, subtype }: { type: string; subtype?: string }
     }
 
     // Si no hay `subtype`, se asume que `typeData` es un array
-    if (Array.isArray(typeData)) {
+    if (Array.isArray(typeData) && type != 'fotografo') {
       return typeData.slice(0, offset); // Devuelve las fotos del `type`
     }
 
