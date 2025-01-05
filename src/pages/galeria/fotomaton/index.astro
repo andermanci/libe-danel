@@ -23,3 +23,20 @@ import Footer from '@/sections/Footer.astro';
 		<Footer/>
 	</main>
 </Layout>
+
+<script type="text/partytown">
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3Z6SKQCHB5');
+
+    // Registra las rutas cuando cambien
+    window.addEventListener('popstate', function() {
+        gtag('event', 'page_view', {
+            page_location: window.location.href,
+            page_path: window.location.pathname,
+            page_title: document.title
+        });
+    });
+</script>

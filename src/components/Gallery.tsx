@@ -4,9 +4,9 @@ import { useGallery } from "@/hooks/useGallery"
 import '@/components/styles/Galeria.css';
 import { useCallback, useEffect, useRef } from 'preact/hooks';
 
-export default function Galeria({type}:{type:string}) {
+export default function Galeria({type, subtype}:{type:string, subtype?: string}) {
   
-  const {first,isExpanded,photos,LoadMore} = useGallery({type})
+  const {first,isExpanded,photos,LoadMore} = useGallery({type, subtype})
 
   const observerRef = useRef<HTMLDivElement | null>(null);
 
@@ -50,7 +50,7 @@ export default function Galeria({type}:{type:string}) {
           photos.map(({ height, width }, i) => (
             <a
               class="group rounded-xl hover:scale-105 hover:contrast-[110%] transition-all relative"
-              href={`/images/gallery/${type}/img-${i + 1}.webp`}
+              href={`/images/gallery/${type}${subtype ? `/${subtype}` : ''}/img-${i + 1}.webp`}
               target="_blank"
               data-cropped="true"
               data-pswp-width={width}
@@ -60,7 +60,7 @@ export default function Galeria({type}:{type:string}) {
               <img
                 class="rounded-xl object-cover w-full h-auto"
                 loading="lazy"
-                src={`/images/gallery/${type}/thumbnails/img-${
+                src={`/images/gallery/${type}/thumbnails${subtype ? `/${subtype}` : ''}/img-${
                   i + 1
                 }.webp`}
                 alt="Fotografía de la boda"
@@ -68,7 +68,7 @@ export default function Galeria({type}:{type:string}) {
               <img
                 class="blur-md opacity-0 group-hover:opacity-100 absolute inset-0 transition contrast-150 -z-10 object-cover"
                 loading="lazy"
-                src={`/images/gallery/${type}/thumbnails/img-${
+                src={`/images/gallery/${type}/thumbnails${subtype ? `/${subtype}` : ''}/img-${
                   i + 1
                 }.webp`}
                 alt="Imagen con efecto blur para hacer de sombra de una fotografía de la boda"
